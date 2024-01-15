@@ -8,7 +8,7 @@ const PersonajeContext = createContext();
 const PersonajeProvider = ({children}) =>{
 
     const [personajes, setPersonajes] = useState([]);
-    const [espisodios, setEpisodios] = useState([]);
+    const [episodios, setEpisodios] = useState([]);
 
     
     useEffect(() => {
@@ -17,24 +17,22 @@ const PersonajeProvider = ({children}) =>{
           "https://rickandmortyapi.com/api/character"
         );
         const { results } = data;
-        console.log(results)
         setPersonajes(results);
       };
       obtenerPersonajes();
     }, []);
+    
     const Episodios = (id) =>{
       const personajeSeleccionado = personajes.find(personajes => personajes.id === id);
       if(personajeSeleccionado) {
         // eslint-disable-next-line no-unused-vars
-        const episodios = personajeSeleccionado.episode.filter(episodio =>{
-          console.log(episodio)
-          setEpisodios(episodio)
-        })
+        const episodios = personajeSeleccionado.episode
+          setEpisodios(episodios)
       }
     }
-
+   
     return (
-        <PersonajeContext.Provider value={{personajes, Episodios, espisodios}}>
+        <PersonajeContext.Provider value={{personajes, Episodios, episodios}}>
             {children}
         </PersonajeContext.Provider>
     )

@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Layout>
         <Routes>
            <Route path='/' element={<App />}/>
-           <Route path=':id' element= {<Episodios />} />
+           <Route path='/Episodios' element= {<Episodios />} />
            <Route path='*' element={<NotFound />} />
         </Routes>
      </Layout>

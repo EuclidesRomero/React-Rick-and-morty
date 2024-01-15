@@ -1,12 +1,15 @@
 import Badge from "./Badge";
 import usePersonaje from "../hooks/UsePersonaje";
+import { Link } from "react-router-dom";
 
 const Personaje = () => {
   // eslint-disable-next-line no-unused-vars
-  const { personajes, Episodios }= usePersonaje();
-  const capturarId = (id) =>{
-    Episodios(id)
-  }
+
+  const { personajes, Episodios } = usePersonaje();
+  const capturarId = (id) => {
+    Episodios(id);
+  };
+
   return (
     <div className=" w-full flex flex-wrap gap-x-10 justify-center dark:bg-neutral-900">
       {personajes.map((personaje) => (
@@ -28,10 +31,21 @@ const Personaje = () => {
             Información del personaje
           </h3>
           <div className="h-32 w-auto flex flex-row justify-between items-center">
-            <Badge><p> Genero: {personaje.gender}</p></Badge>
-            <Badge><p > Especie: {personaje.species}</p></Badge>
+            <Badge>
+              <p> Genero: {personaje.gender}</p>
+            </Badge>
+            <Badge>
+              <p> Especie: {personaje.species}</p>
+            </Badge>
             <div>
-              <button className="border rounded-lg bg-white/100 font-bold mr-2 h-[20PX] text-xs" onClick={()=> capturarId(personaje.id)}>Episodios</button>
+            <Link to={"/Episodios"}>
+              <button
+                className="border rounded-lg bg-white/100 font-bold mr-2 h-[20PX] text-xs"
+                onClick={() => capturarId(personaje.id)} 
+                >
+                Episodios 
+              </button>
+            </Link>
             </div>
           </div>
         </div>
