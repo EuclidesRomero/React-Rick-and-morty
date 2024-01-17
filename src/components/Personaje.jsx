@@ -1,22 +1,24 @@
 import Badge from "./Badge";
 import usePersonaje from "../hooks/UsePersonaje";
+import Status from "./Status";
 import { Link } from "react-router-dom";
 
 const Personaje = () => {
   // eslint-disable-next-line no-unused-vars
 
   const { personajes, Episodios } = usePersonaje();
-  const capturarId = (id) => {
-    Episodios(id);
-  };
 
+  const capturarId = (id) =>Episodios(id);
+
+  console.log(personajes)
   return (
     <div className=" w-full flex flex-wrap gap-x-10 justify-center dark:bg-neutral-900">
       {personajes.map((personaje) => (
         <div
           key={personaje.id}
-          className="bg-slate-400 w-[350px] h-96 mb-10 mt-10 rounded-lg"
+          className="bg-slate-400 w-[350px] h-[400px] mb-10 mt-10 rounded-lg"
         >
+           <Status id={personaje.status}>{personaje.status}</Status>
           <p className="text-white dark:text-black text-center text-pretty pt-5 text-2xl">
             {personaje.name}
           </p>

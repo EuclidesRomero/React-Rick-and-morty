@@ -12,7 +12,6 @@ import axios from "axios";
       console.log("Resultado actualizado:", resultado);
     }, [resultado]);
 
-
     useEffect(() => {
       const obtenerInfo = async () => {
         try {
@@ -21,7 +20,7 @@ import axios from "axios";
             return respuesta.data;
           });
           const episodiosData =  await Promise.all(episodiosPromise );
-          if(episodiosData.length !==0)setResultado(episodiosData);
+          if(episodiosData.length !==0) setResultado(episodiosData);
         } catch (error) { 
           console.error("Error al obtener datos de episodios:", error);
         }
